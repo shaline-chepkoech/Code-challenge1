@@ -8,30 +8,9 @@
     basicSalary = parseInt(basicSalary);
     benefits = parseInt(benefits);
 
-    //calculates PAYE
-    let PAYE;
-    if(basicSalary <= 24000){
-        PAYE = (basicSalary + benefits) * 0.1 ;
-    }
-    if(basicSalary >=24001 && basicSalary <= 32333 ){
-        PAYE = (basicSalary + benefits) * 0.25 ;
-    }
-    if(basicSalary >=32334 && basicSalary <=500000){
-        PAYE = (basicSalary + benefits) * 0.30 ;
-    }
-    if(basicSalary >=500001 && basicSalary <=800000){
-        PAYE = (basicSalary + benefits) * 0.325 ;
-    }
-    if(basicSalary >800001){
-        PAYE = (basicSalary + benefits) * 0.35 ;
-        
-    }
-    
-   
-    //calculates Gross salary
-    let grossPay = basicSalary + benefits;
-    
-    //calculates NHIF
+     //calculates Gross salary
+     let grossPay = basicSalary + benefits;
+      //calculates NHIF
     let NHIF
     if(grossPay <5999){
         NHIF = 150 ;
@@ -87,12 +66,42 @@
     
     
     //calculates NSSF
-    let NSSF = (basicSalary) * 0.6
-             
-    //calculates net salary
-     let netSalary = grossPay - PAYE - NHIF - NSSF
-    return netSalary
+    let NSSF = (basicSalary) * 0.06
 
-}
- //returns calculated value
-        console.log (salaryCalculator());
+    //calculates Taxable Pay
+    let taxablePay = grossPay - NHIF - NSSF
+
+    //calculates PAYE
+    let PAYE;
+    if(basicSalary <= 24000){
+        PAYE = (taxablePay * 0.1) - 2400 ;
+    }
+    if(basicSalary >=24001 && basicSalary <= 32333 ){
+        PAYE = (taxablePay * 0.25) - 2400 ;
+    }
+    if(basicSalary >=32334 && basicSalary <=500000){
+        PAYE = (taxablePay * 0.30) - 2400 ;
+    }
+    if(basicSalary >=500001 && basicSalary <=800000){
+        PAYE = (taxablePay * 0.325) - 2400;
+    }
+    if(basicSalary >800001){
+        PAYE = (taxablePay * 0.35) - 2400 ;
+        
+    }
+              
+    //calculates net salary
+     let netSalary = grossPay - PAYE - NHIF - NSSF;
+
+     //returns results
+    return {
+        grossPay: grossPay,
+        PAYE: PAYE,
+        NHIF: NHIF,
+        NSSF: NSSF,
+        netSalary: netSalary,
+           };
+   }
+ //calls function and logs results
+        const salaryDetails = salaryCalculator()
+        console.log (salaryDetails);
