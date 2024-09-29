@@ -10,16 +10,16 @@ A repository containing three different programs;
 #### Date, 2024/09/27
 
 ## Installation
-You use git clone to be able to create a clone of the repository on your local machine
+You use fork and git clone to be able to create a copy of the repository on your local machine
 ### Installation instruction
 ```
-Git clone git@github.com:shaline-chepkoech/Code-challenge1.git
+ Git clone git@github.com:shaline-chepkoech/Code-challenge1.git
 
 ```
 
 ## Technologies used
-Github
-Javascript
+1. Github
+2. Javascript
 
 ## Support and contact details
 github.com/shaline-chepkoech
